@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Vida Plena — Saúde integrada em São Paulo</title>
+<meta name="description" content="Clínica médica multidisciplinar em São Paulo. Atendimento humanizado em clínica geral, dermatologia, pediatria e mais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter+Tight:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f6f9fc;
+    --bg-accent: #eef4fb;
+    --ink: #0d1b2a;
+    --ink-soft: #45556c;
+    --ink-muted: #7a8699;
+    --line: #e3eaf2;
+    --brand: #1a4d8f;
+    --brand-deep: #0f3566;
+    --brand-soft: #e8f0fa;
+    --accent: #4a9eb8;
+    --success: #2d7a4f;
+    --warn: #c85a3c;
+    --radius-sm: 6px;
+    --radius: 12px;
+    --radius-lg: 20px;
+    --shadow-sm: 0 1px 2px rgba(13,27,42,0.04), 0 1px 3px rgba(13,27,42,0.06);
+    --shadow: 0 4px 14px rgba(13,27,42,0.06), 0 2px 4px rgba(13,27,42,0.04);
+    --shadow-lg: 0 20px 50px rgba(13,27,42,0.08), 0 4px 12px rgba(13,27,42,0.05);
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-zh-display: 'Noto Serif SC', serif;
+    --font-zh-body: 'Noto Sans SC', sans-serif;
+    --container: 1200px;
+  }
+
+  html[lang="zh"] {
+    --font-display: 'Noto Serif SC', serif;
+    --font-body: 'Noto Sans SC', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 400; }
+  h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 400; }
+  h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+
+  p { color: var(--ink-soft); }
+
+  a { color: var(--brand); text-decoration: none; transition: color 0.2s; }
+  a:hover { color: var(--brand-deep); }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    background: var(--brand-deep);
+    color: #cfe0f5;
+    font-size: 0.825rem;
+    padding: 8px 0;
+  }
+  .topbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .topbar-info { display: flex; gap: 20px; flex-wrap: wrap; }
+  .topbar-info span { display: inline-flex; align-items: center; gap: 6px; }
+  .topbar svg { width: 14px; height: 14px; opacity: 0.85; }
+  .lang-switch { display: flex; gap: 4px; }
+  .lang-switch button {
+    background: transparent;
+    color: #cfe0f5;
+    border: 1px solid rgba(207,224,245,0.25);
+    padding: 3px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: inherit;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+  }
+  .lang-switch button.active {
+    background: #cfe0f5;
+    color: var(--brand-deep);
+    border-color: #cfe0f5;
+  }
+  .lang-switch button:hover:not(.active) {
+    background: rgba(207,224,245,0.1);
+  }
+
+  /* ---------- Header / Nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .logo-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-style: italic;
+  }
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    align-items: center;
+  }
+  nav a {
+    color: var(--ink-soft);
+    font-weight: 500;
+    font-size: 0.925rem;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--brand); }
+  .nav-cta {
+    background: var(--brand);
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--brand-deep); transform: translateY(-1px); }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .menu-toggle svg { width: 24px; height: 24px; color: var(--ink); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: 80px 0 100px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 800px 400px at 85% 20%, var(--brand-soft) 0%, transparent 60%),
+      radial-gradient(ellipse 600px 300px at 10% 90%, #f0f7fd 0%, transparent 70%),
+      var(--bg);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.35;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 80%);
+    pointer-events: none;
+  }
+  .hero .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid var(--line);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 0 3px rgba(45,122,79,0.15);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(45,122,79,0.15); }
+    50% { box-shadow: 0 0 0 6px rgba(45,122,79,0.05); }
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--brand);
+  }
+  .hero-lede {
+    font-size: 1.125rem;
+    margin: 24px 0 36px;
+    max-width: 520px;
+    color: var(--ink-soft);
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.975rem;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--brand);
+    color: white;
+  }
+  .btn-primary:hover {
+    background: var(--brand-deep);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .btn-secondary {
+    background: white;
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-secondary:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+    transform: translateY(-2px);
+  }
+  .btn-whatsapp {
+    background: #25D366;
+    color: white;
+  }
+  .btn-whatsapp:hover {
+    background: #1fb855;
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .hero-card {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--line);
+  }
+  .hero-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 20px;
+  }
+  .hero-card-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--ink);
+  }
+  .hero-card-subtitle {
+    font-size: 0.825rem;
+    color: var(--ink-muted);
+    margin-top: 2px;
+  }
+  .status-chip {
+    background: rgba(45,122,79,0.1);
+    color: var(--success);
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hours-list { display: grid; gap: 12px; }
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 0.9rem;
+  }
+  .hours-row .day { color: var(--ink-soft); font-weight: 500; }
+  .hours-row .time { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .hours-row.today {
+    background: var(--brand-soft);
+    margin: 0 -16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+  .hours-row.today .day { color: var(--brand-deep); font-weight: 600; }
+  .hours-row.today .time { color: var(--brand-deep); font-weight: 600; }
+
+  .hero-decoration {
+    position: absolute;
+    top: -24px;
+    right: -24px;
+    width: 80px;
+    height: 80px;
+    background: var(--accent);
+    opacity: 0.1;
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  /* ---------- Section base ---------- */
+  section { padding: 96px 0; }
+  .section-head {
+    max-width: 680px;
+    margin: 0 auto 64px;
+    text-align: center;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brand);
+    margin-bottom: 16px;
+  }
+  .section-head p {
+    margin-top: 16px;
+    font-size: 1.075rem;
+  }
+
+  /* ---------- Trust bar ---------- */
+  .trust {
+    padding: 40px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-soft);
+  }
+  .trust .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    align-items: center;
+  }
+  .trust-item {
+    text-align: center;
+  }
+  .trust-number {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: var(--brand);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .trust-label {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  /* ---------- Services ---------- */
+  .services {
+    background: var(--bg);
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    padding: 32px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--brand);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .service-card:hover {
+    border-color: var(--brand);
+    box-shadow: var(--shadow);
+    transform: translateY(-4px);
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--brand-soft);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--brand);
+  }
+  .service-icon svg { width: 24px; height: 24px; }
+  .service-card h3 {
+    margin-bottom: 8px;
+    font-size: 1.25rem;
+  }
+  .service-card p {
+    font-size: 0.925rem;
+    line-height: 1.6;
+  }
+  .service-more {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: var(--brand);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ---------- About ---------- */
+  .about {
+    background: var(--bg-soft);
+  }
+  .about .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--brand-deep) 0%, var(--brand) 50%, var(--accent) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08) 0%, transparent 50%);
+  }
+  .about-visual-inner {
+    position: relative;
+    color: white;
+    text-align: center;
+    padding: 40px;
+    z-index: 1;
+  }
+  .about-visual-inner .quote-mark {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    line-height: 0.5;
+    opacity: 0.4;
+    font-style: italic;
+  }
+  .about-visual-inner blockquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.35rem;
+    line-height: 1.5;
+    margin: 24px 0;
+  }
+  .about-visual-inner cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.875rem;
+    opacity: 0.85;
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
+  }
+  .about-text h2 { margin-bottom: 24px; }
+  .about-text p {
+    margin-bottom: 20px;
+    font-size: 1.025rem;
+  }
+  .about-features {
+    margin-top: 32px;
+    display: grid;
+    gap: 16px;
+  }
+  .about-feature {
+    display: flex;
+    gap: 14px;
+    align-items: start;
+  }
+  .about-feature .check {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--brand-soft);
+    color: var(--brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .about-feature .check svg { width: 14px; height: 14px; }
+  .about-feature strong { color: var(--ink); font-weight: 600; }
+  .about-feature span { color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ---------- Doctors ---------- */
+  .doctors { background: var(--bg); }
+  .doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .doctor-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .doctor-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-4px);
+  }
+  .doctor-photo {
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, var(--brand-soft) 0%, #dce8f5 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand-deep);
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 400;
+    position: relative;
+  }
+  .doctor-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 30%, transparent 0%, rgba(26,77,143,0.1) 100%);
+  }
+  .doctor-info {
+    padding: 24px;
+  }
+  .doctor-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+  }
+  .doctor-specialty {
+    color: var(--brand);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .doctor-crm {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    margin-top: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Appointment form ---------- */
+  .appointment {
+    background:
+      linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+  }
+  .appointment .container {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .appointment-info h2 { margin-bottom: 20px; }
+  .appointment-info p { font-size: 1.025rem; margin-bottom: 32px; }
+  .appointment-steps {
+    display: grid;
+    gap: 20px;
+  }
+  .appointment-step {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  .appointment-step strong { display: block; color: var(--ink); margin-bottom: 4px; font-size: 1rem; }
+  .appointment-step span { color: var(--ink-soft); font-size: 0.9rem; }
+
+  .appointment-form {
+    background: white;
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .form-group label .req { color: var(--warn); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: var(--bg);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(26,77,143,0.1);
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  .form-consent {
+    display: flex;
+    gap: 10px;
+    align-items: start;
+    padding: 14px;
+    background: var(--bg-soft);
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 0.825rem;
+    color: var(--ink-soft);
+  }
+  .form-consent input { margin-top: 3px; flex-shrink: 0; }
+  .form-consent a { color: var(--brand); font-weight: 500; }
+  .form-submit {
+    width: 100%;
+    justify-content: center;
+    padding: 16px;
+    font-size: 1rem;
+  }
+  .form-alt {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+  }
+  .form-alt a {
+    color: var(--success);
+    font-weight: 600;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq { background: var(--bg); }
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 12px;
+  }
+  .faq-item {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .faq-item[open] { border-color: var(--brand); }
+  .faq-item summary {
+    padding: 20px 24px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--ink);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 1rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--brand);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p {
+    padding: 0 24px 24px;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* ---------- Location ---------- */
+  .location { background: var(--bg-soft); }
+  .location .container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .location-info h2 { margin-bottom: 24px; }
+  .location-detail {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 20px;
+    align-items: start;
+  }
+  .location-detail-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand);
+  }
+  .location-detail-icon svg { width: 18px; height: 18px; }
+  .location-detail strong { display: block; color: var(--ink); margin-bottom: 2px; font-weight: 600; }
+  .location-detail span, .location-detail a { color: var(--ink-soft); font-size: 0.95rem; }
+  .map-placeholder {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: linear-gradient(135deg, #e8f0fa 0%, #dce8f5 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+  }
+  .map-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(26,77,143,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,77,143,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .map-pin {
+    position: relative;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    background: var(--brand);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 8px 20px rgba(26,77,143,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .map-pin::after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--brand-deep);
+    color: #cfe0f5;
+    padding: 64px 0 24px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  footer h4 {
+    color: white;
+    font-family: var(--font-body);
+    font-size: 0.925rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .footer-brand .logo-mark { background: rgba(255,255,255,0.15); }
+  .footer-brand h4 { color: white; font-family: var(--font-display); font-size: 1.25rem; text-transform: none; letter-spacing: -0.01em; font-weight: 500; margin-bottom: 12px; }
+  .footer-brand p { color: #9cb5d4; font-size: 0.9rem; margin-bottom: 20px; max-width: 320px; line-height: 1.6; }
+  footer ul { list-style: none; display: grid; gap: 10px; }
+  footer ul a {
+    color: #9cb5d4;
+    font-size: 0.9rem;
+  }
+  footer ul a:hover { color: white; }
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.825rem;
+    color: #7a94b8;
+  }
+  .footer-legal { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-legal a { color: #9cb5d4; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    nav ul { display: none; }
+    .menu-toggle { display: block; }
+    .hero .container,
+    .about .container,
+    .appointment .container,
+    .location .container {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .services-grid,
+    .doctors-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .trust .container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    section { padding: 72px 0; }
+    .hero { padding: 48px 0 64px; }
+  }
+
+  @media (max-width: 640px) {
+    .services-grid,
+    .doctors-grid {
+      grid-template-columns: 1fr;
+    }
+    .form-row { grid-template-columns: 1fr; }
+    .appointment-form { padding: 24px; }
+    .topbar-info { gap: 12px; font-size: 0.75rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Utility for language switching */
+  .zh { display: none; }
+  html[lang="zh"] .pt { display: none; }
+  html[lang="zh"] .zh { display: inline; }
+  html[lang="zh"] p.pt,
+  html[lang="zh"] div.pt,
+  html[lang="zh"] li.pt,
+  html[lang="zh"] h1.pt,
+  html[lang="zh"] h2.pt,
+  html[lang="zh"] h3.pt,
+  html[lang="zh"] span.pt.block { display: none; }
+  html[lang="zh"] p.zh,
+  html[lang="zh"] div.zh,
+  html[lang="zh"] li.zh,
+  html[lang="zh"] h1.zh,
+  html[lang="zh"] h2.zh,
+  html[lang="zh"] h3.zh,
+  html[lang="zh"] span.zh.block { display: block; }
+
+  /* Reveal animation */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-info">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (11) 3456-7890
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="pt">Rua das Flores, 1234 · Pinheiros, SP</span><span class="zh">花街1234號 · 皮涅魯斯區, 聖保羅</span>
+      </span>
+    </div>
+    <div class="lang-switch">
+      <button class="active" data-lang="pt">PT</button>
+      <button data-lang="zh">中文</button>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <a href="#top" class="logo">
+      <span class="logo-mark">V</span>
+      <span>
+        <span class="pt">Clínica Vida Plena</span>
+        <span class="zh">盈康診所</span>
+      </span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#services"><span class="pt">Especialidades</span><span class="zh">科別</span></a></li>
+        <li><a href="#about"><span class="pt">Sobre</span><span class="zh">關於</span></a></li>
+        <li><a href="#doctors"><span class="pt">Médicos</span><span class="zh">醫師</span></a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#location"><span class="pt">Localização</span><span class="zh">交通</span></a></li>
+        <li><a href="#appointment" class="nav-cta"><span class="pt">Agendar</span><span class="zh">線上預約</span></a></li>
+      </ul>
+      <button class="menu-toggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top" style="padding-top: 80px;">
+  <div class="container">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        <span class="pt">Atendendo hoje · 08h às 19h</span>
+        <span class="zh">今日營業 · 上午8點至晚上7點</span>
+      </div>
+      <h1 class="pt">Cuidado médico <em>humanizado</em> para toda a família.</h1>
+      <h1 class="zh">以<em>人為本</em>的家庭醫療照護</h1>
+      <p class="hero-lede pt">Uma clínica multidisciplinar em São Paulo que combina medicina de qualidade, tecnologia moderna e atendimento acolhedor — no seu idioma, no seu tempo.</p>
+      <p class="hero-lede zh">位於聖保羅的多專科綜合診所，結合優質醫療、現代化設備與貼心服務——用您熟悉的語言，配合您的時間。</p>
+      <div class="hero-actions">
+        <a href="#appointment" class="btn btn-primary">
+          <span class="pt">Agendar consulta</span>
+          <span class="zh">線上預約</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://wa.me/5511987654321" class="btn btn-whatsapp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-decoration"></div>
+      <div class="hero-card-header">
+        <div>
+          <div class="hero-card-title pt">Horário de funcionamento</div>
+          <div class="hero-card-title zh">營業時間</div>
+          <div class="hero-card-subtitle pt">Atendemos sem agendamento em horário comercial</div>
+          <div class="hero-card-subtitle zh">上班時間歡迎臨櫃看診</div>
+        </div>
+        <span class="status-chip">
+          <span class="dot" style="background: currentColor; width: 6px; height: 6px; border-radius: 50%;"></span>
+          <span class="pt">Aberto</span>
+          <span class="zh">營業中</span>
+        </span>
+      </div>
+      <div class="hours-list">
+        <div class="hours-row today">
+          <span class="day"><span class="pt">Segunda–Sexta</span><span class="zh">週一至週五</span></span>
+          <span class="time">08:00 — 19:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="day"><span class="pt">Sábado</span><span class="zh">週六</span></span>
+          <span class="time">08:00 — 13:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="day"><span class="pt">Domingo e feriados</span><span class="zh">週日及假日</span></span>
+          <span class="time pt">Fechado</span>
+          <span class="time zh">休診</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust bar -->
+<section class="trust" style="padding: 48px 0;">
+  <div class="container">
+    <div class="trust-item">
+      <div class="trust-number">15+</div>
+      <div class="trust-label pt">anos de atendimento</div>
+      <div class="trust-label zh">年專業服務經驗</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">12</div>
+      <div class="trust-label pt">especialidades médicas</div>
+      <div class="trust-label zh">項醫療專科</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">8.000+</div>
+      <div class="trust-label pt">pacientes atendidos</div>
+      <div class="trust-label zh">位病患服務記錄</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">4,9</div>
+      <div class="trust-label pt">avaliação Google</div>
+      <div class="trust-label zh">Google 評分</div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow pt">Nossas especialidades</span>
+      <span class="eyebrow zh">醫療專科</span>
+      <h2 class="pt">Cuidado completo, de uma única casa</h2>
+      <h2 class="zh">一站式完整醫療服務</h2>
+      <p class="pt">Reunimos especialidades complementares para que você e sua família sejam atendidos de forma integrada, sem precisar correr entre diferentes lugares.</p>
+      <p class="zh">我們整合多個專科，讓您和家人享受完整的醫療照護，無需奔波於不同診所之間。</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 class="pt">Clínica Geral</h3>
+        <h3 class="zh">一般內科</h3>
+        <p class="pt">Consultas de rotina, prevenção, acompanhamento de doenças crônicas e encaminhamentos.</p>
+        <p class="zh">日常看診、預防保健、慢性病管理及專科轉診。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="14.83" y1="9.17" x2="18.36" y2="5.64"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg>
+        </div>
+        <h3 class="pt">Dermatologia</h3>
+        <h3 class="zh">皮膚科</h3>
+        <p class="pt">Tratamento de acne, alergias, lesões de pele e procedimentos estéticos.</p>
+        <p class="zh">痤瘡、過敏、皮膚病變治療及醫美療程。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 5c0-1.66 4-3 9-3s9 1.34 9 3-4 3-9 3-9-1.34-9-3z"/></svg>
+        </div>
+        <h3 class="pt">Pediatria</h3>
+        <h3 class="zh">兒科</h3>
+        <p class="pt">Acompanhamento do desenvolvimento infantil, vacinação e puericultura.</p>
+        <p class="zh">兒童生長發育追蹤、疫苗接種及嬰幼兒保健。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
+        </div>
+        <h3 class="pt">Ginecologia</h3>
+        <h3 class="zh">婦產科</h3>
+        <p class="pt">Saúde da mulher em todas as fases, pré-natal e exames preventivos.</p>
+        <p class="zh">女性各階段健康照護、產前檢查及預防性篩檢。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="pt">Cardiologia</h3>
+        <h3 class="zh">心臟科</h3>
+        <p class="pt">Avaliação cardiovascular, eletrocardiograma e acompanhamento de hipertensão.</p>
+        <p class="zh">心血管評估、心電圖及高血壓追蹤管理。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        </div>
+        <h3 class="pt">Medicina Chinesa</h3>
+        <h3 class="zh">中醫科</h3>
+        <p class="pt">Acupuntura, fitoterapia e medicina tradicional para equilíbrio e bem-estar.</p>
+        <p class="zh">針灸、中藥調理及傳統中醫療法，促進身心平衡。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-visual">
+      <div class="about-visual-inner">
+        <div class="quote-mark">"</div>
+        <blockquote class="pt">Tratar cada paciente como se fosse da própria família. Esse é o nosso compromisso desde o primeiro dia.</blockquote>
+        <blockquote class="zh">視每位病人如家人——這是我們開業第一天就許下的承諾。</blockquote>
+        <cite class="pt">— Dr. Ricardo Mendes, diretor clínico</cite>
+        <cite class="zh">— 總院長 Ricardo Mendes 醫師</cite>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow pt">Sobre a clínica</span>
+      <span class="eyebrow zh">關於診所</span>
+      <h2 class="pt">Medicina de confiança, no ritmo humano</h2>
+      <h2 class="zh">值得信賴的醫療，以人為本的步調</h2>
+      <p class="pt">Fundada em 2009 no coração de Pinheiros, a Clínica Vida Plena nasceu do desejo de oferecer atendimento médico sem pressa, com escuta verdadeira e acesso a múltiplas especialidades sob o mesmo teto.</p>
+      <p class="zh">盈康診所創立於2009年，坐落於聖保羅皮涅魯斯區。我們秉持「不趕時間、真誠傾聽」的理念，在同一個空間提供多專科整合照護。</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <strong class="pt">Equipe bilíngue</strong>
+            <strong class="zh">雙語醫療團隊</strong>
+            <span class="pt"> — atendemos em português, chinês e inglês.</span>
+            <span class="zh"> — 提供葡萄牙文、中文、英文看診服務。</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <strong class="pt">Prontuário integrado</strong>
+            <strong class="zh">整合病歷系統</strong>
+            <span class="pt"> — histórico unificado entre todas as especialidades, conforme LGPD.</span>
+            <span class="zh"> — 跨科別統一病歷管理，符合LGPD個資規範。</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <strong class="pt">Convênios e particular</strong>
+            <strong class="zh">接受保險及自費</strong>
+            <span class="pt"> — atendemos os principais convênios médicos do país.</span>
+            <span class="zh"> — 配合巴西主要醫療保險。</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <strong class="pt">Localização acessível</strong>
+            <strong class="zh">交通便利</strong>
+            <span class="pt"> — a 5 minutos a pé da estação de metrô Faria Lima.</span>
+            <span class="zh"> — 距離法里亞利馬地鐵站步行僅5分鐘。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Doctors -->
+<section class="doctors" id="doctors">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow pt">Nossos médicos</span>
+      <span class="eyebrow zh">醫師介紹</span>
+      <h2 class="pt">Profissionais experientes, dedicados a você</h2>
+      <h2 class="zh">經驗豐富的醫療團隊，為您用心服務</h2>
+    </div>
+    <div class="doctors-grid">
+      <div class="doctor-card">
+        <div class="doctor-photo">RM</div>
+        <div class="doctor-info">
+          <h3>Dr. Ricardo Mendes</h3>
+          <div class="doctor-specialty pt">Clínica Geral · Diretor Clínico</div>
+          <div class="doctor-specialty zh">一般內科 · 總院長</div>
+          <p class="pt">Graduado pela USP, com residência no Hospital das Clínicas. 20 anos de experiência em medicina interna.</p>
+          <p class="zh">聖保羅大學醫學院畢業，臨床醫院住院醫師訓練，20年內科臨床經驗。</p>
+          <div class="doctor-crm">CRM-SP 123.456</div>
+        </div>
+      </div>
+      <div class="doctor-card">
+        <div class="doctor-photo">LC</div>
+        <div class="doctor-info">
+          <h3>Dra. Lin Chen</h3>
+          <div class="doctor-specialty pt">Medicina Chinesa · Acupuntura</div>
+          <div class="doctor-specialty zh">中醫科 · 針灸</div>
+          <p class="pt">Especialista em acupuntura pela AMB. Atende em português, mandarim e cantonês.</p>
+          <p class="zh">巴西醫學會認證針灸專科醫師，提供葡語、國語、粵語看診。</p>
+          <div class="doctor-crm">CRM-SP 234.567</div>
+        </div>
+      </div>
+      <div class="doctor-card">
+        <div class="doctor-photo">AS</div>
+        <div class="doctor-info">
+          <h3>Dra. Ana Silva</h3>
+          <div class="doctor-specialty pt">Pediatria</div>
+          <div class="doctor-specialty zh">兒科</div>
+          <p class="pt">Mestre em pediatria pela UNIFESP. Especialista em desenvolvimento infantil.</p>
+          <p class="zh">聯邦大學兒科醫學碩士，專精兒童生長發育評估。</p>
+          <div class="doctor-crm">CRM-SP 345.678</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Appointment form -->
+<section class="appointment" id="appointment">
+  <div class="container">
+    <div class="appointment-info">
+      <span class="eyebrow pt">Agende sua consulta</span>
+      <span class="eyebrow zh">線上預約</span>
+      <h2 class="pt">Como funciona</h2>
+      <h2 class="zh">預約流程</h2>
+      <p class="pt">Preencha o formulário ao lado e nossa equipe entrará em contato em até 2 horas úteis para confirmar dia, horário e preparativos da consulta.</p>
+      <p class="zh">請填寫右側表單，我們的客服團隊將在2個營業小時內與您聯繫，確認看診日期、時間及注意事項。</p>
+      <div class="appointment-steps">
+        <div class="appointment-step">
+          <div class="step-num">1</div>
+          <div>
+            <strong class="pt">Envie o pedido</strong>
+            <strong class="zh">提交預約申請</strong>
+            <span class="pt">Escolha a especialidade e o período de preferência.</span>
+            <span class="zh">選擇科別及希望就診時段。</span>
+          </div>
+        </div>
+        <div class="appointment-step">
+          <div class="step-num">2</div>
+          <div>
+            <strong class="pt">Confirmação por contato</strong>
+            <strong class="zh">確認聯繫</strong>
+            <span class="pt">Ligamos ou enviamos WhatsApp para alinhar o horário.</span>
+            <span class="zh">我們將透過電話或WhatsApp與您確認時段。</span>
+          </div>
+        </div>
+        <div class="appointment-step">
+          <div class="step-num">3</div>
+          <div>
+            <strong class="pt">Dia da consulta</strong>
+            <strong class="zh">看診當天</strong>
+            <span class="pt">Chegue 10 minutos antes com seus documentos.</span>
+            <span class="zh">請提前10分鐘攜帶證件到診所報到。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form class="appointment-form" id="appointmentForm" onsubmit="return handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name"><span class="pt">Nome completo</span><span class="zh">姓名</span> <span class="req">*</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone"><span class="pt">Telefone / WhatsApp</span><span class="zh">電話 / WhatsApp</span> <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="(11) 98765-4321" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="specialty"><span class="pt">Especialidade</span><span class="zh">科別</span> <span class="req">*</span></label>
+          <select id="specialty" name="specialty" required>
+            <option value="" class="pt">Selecione...</option>
+            <option value="" class="zh">請選擇...</option>
+            <option value="clinica-geral">Clínica Geral / 一般內科</option>
+            <option value="dermatologia">Dermatologia / 皮膚科</option>
+            <option value="pediatria">Pediatria / 兒科</option>
+            <option value="ginecologia">Ginecologia / 婦產科</option>
+            <option value="cardiologia">Cardiologia / 心臟科</option>
+            <option value="medicina-chinesa">Medicina Chinesa / 中醫</option>
+            <option value="outro">Outro / 其他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="period"><span class="pt">Período preferido</span><span class="zh">希望時段</span></label>
+          <select id="period" name="period">
+            <option value="manha">Manhã / 上午 (08h-12h)</option>
+            <option value="tarde">Tarde / 下午 (12h-17h)</option>
+            <option value="fim-tarde">Fim de tarde / 傍晚 (17h-19h)</option>
+            <option value="sabado">Sábado / 週六</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message"><span class="pt">Motivo da consulta (opcional)</span><span class="zh">看診原因（選填）</span></label>
+        <textarea id="message" name="message" placeholder=""></textarea>
+      </div>
+      <div class="form-consent">
+        <input type="checkbox" id="consent" required>
+        <label for="consent">
+          <span class="pt">Li e aceito que meus dados sejam tratados conforme a <a href="#">Política de Privacidade</a> desta clínica, em conformidade com a LGPD (Lei 13.709/18).</span>
+          <span class="zh">本人已閱讀並同意依據LGPD個資保護法（第13.709/18號法律）及本診所<a href="#">隱私權政策</a>處理個人資料。</span>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary form-submit">
+        <span class="pt">Enviar pedido de agendamento</span>
+        <span class="zh">送出預約申請</span>
+      </button>
+      <div class="form-alt">
+        <span class="pt">Prefere falar agora? </span>
+        <span class="zh">想立即聯繫？</span>
+        <a href="https://wa.me/5511987654321">WhatsApp (11) 98765-4321</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow pt">Dúvidas frequentes</span>
+      <span class="eyebrow zh">常見問題</span>
+      <h2 class="pt">Perguntas comuns, respostas claras</h2>
+      <h2 class="zh">清楚解答您的疑問</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><span class="pt">Vocês atendem por convênio?</span><span class="zh">你們接受醫療保險嗎？</span></summary>
+        <p class="pt">Sim, atendemos diversos convênios incluindo Amil, Bradesco Saúde, SulAmérica, Porto Seguro e Unimed. Entre em contato para confirmar a cobertura da sua especialidade.</p>
+        <p class="zh">是的，我們接受多家醫療保險，包括 Amil、Bradesco Saúde、SulAmérica、Porto Seguro 和 Unimed。請聯繫我們確認您的保險是否涵蓋該科別。</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="pt">Os médicos falam chinês?</span><span class="zh">醫師會說中文嗎？</span></summary>
+        <p class="pt">Temos médicos e equipe administrativa que falam mandarim e cantonês. Ao agendar, avise que prefere atendimento em chinês e nós direcionamos para o profissional adequado.</p>
+        <p class="zh">是的，我們有能以國語與粵語看診的醫師及行政人員。預約時請告知希望以中文看診，我們會安排合適的醫師為您服務。</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="pt">Posso ter acesso ao meu prontuário?</span><span class="zh">我可以查閱自己的病歷嗎？</span></summary>
+        <p class="pt">Sim, conforme a LGPD, você tem direito pleno ao seu prontuário médico. A entrega é feita de forma segura — presencialmente, em mídia digital criptografada ou através de nosso sistema de prontuário eletrônico certificado. Solicite na recepção ou pelo e-mail dpo@vidaplena.com.br.</p>
+        <p class="zh">可以。根據LGPD個資法，您擁有完整的病歷查閱權。我們透過安全方式交付——當面領取、加密數位媒介或透過已認證的電子病歷系統。可至櫃檯申請或寄信至 dpo@vidaplena.com.br。</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="pt">Qual o tempo médio de espera para uma consulta?</span><span class="zh">一般預約需要等多久？</span></summary>
+        <p class="pt">Para clínica geral, costumamos ter horários disponíveis na mesma semana. Para especialidades, o prazo varia de 3 a 10 dias. Casos urgentes são priorizados — ligue diretamente.</p>
+        <p class="zh">一般內科通常當週即有空檔。其他專科約需3至10天預約。緊急情況可優先安排，請直接來電聯繫。</p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="pt">Como faço para cancelar ou remarcar?</span><span class="zh">如何取消或改約時間？</span></summary>
+        <p class="pt">Pedimos aviso com pelo menos 24 horas de antecedência, por WhatsApp ou telefone. Isso nos permite atender outros pacientes na sua vaga.</p>
+        <p class="zh">請至少提前24小時透過WhatsApp或電話告知。這樣我們才能把時段安排給其他病患。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Location -->
+<section class="location" id="location">
+  <div class="container">
+    <div class="location-info">
+      <span class="eyebrow pt">Como chegar</span>
+      <span class="eyebrow zh">交通資訊</span>
+      <h2 class="pt">Fácil de encontrar, fácil de chegar</h2>
+      <h2 class="zh">地點便利，輕鬆抵達</h2>
+      <div class="location-detail">
+        <div class="location-detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <strong class="pt">Endereço</strong>
+          <strong class="zh">地址</strong>
+          <span class="pt"><br>Rua das Flores, 1234 — 4º andar<br>Pinheiros, São Paulo — SP<br>CEP 05422-000</span>
+          <span class="zh"><br>花街1234號 4樓<br>皮涅魯斯區，聖保羅<br>郵遞區號 05422-000</span>
+        </div>
+      </div>
+      <div class="location-detail">
+        <div class="location-detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <strong class="pt">Contato</strong>
+          <strong class="zh">聯絡方式</strong>
+          <span><br>(11) 3456-7890 · (11) 98765-4321<br>contato@vidaplena.com.br</span>
+        </div>
+      </div>
+      <div class="location-detail">
+        <div class="location-detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <div>
+          <strong class="pt">Transporte</strong>
+          <strong class="zh">交通方式</strong>
+          <span class="pt"><br>Metrô Faria Lima (linha amarela) — 5 min a pé<br>Estacionamento conveniado no prédio</span>
+          <span class="zh"><br>法里亞利馬地鐵站（黃線）步行5分鐘<br>大樓內有合作停車場</span>
+        </div>
+      </div>
+    </div>
+    <div class="map-placeholder">
+      <!-- In production, replace with <iframe> embed from Google Maps -->
+      <div class="map-pin"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <span class="logo-mark">V</span>
+          <h4 style="margin: 0;">Clínica Vida Plena</h4>
+        </div>
+        <p class="pt">Clínica médica multidisciplinar em Pinheiros, São Paulo. Atendimento humanizado em português, chinês e inglês.</p>
+        <p class="zh">位於聖保羅皮涅魯斯區的多專科綜合診所，提供葡萄牙文、中文、英文貼心看診服務。</p>
+      </div>
+      <div>
+        <h4 class="pt">Navegação</h4>
+        <h4 class="zh">網站導覽</h4>
+        <ul>
+          <li><a href="#services"><span class="pt">Especialidades</span><span class="zh">科別</span></a></li>
+          <li><a href="#about"><span class="pt">Sobre nós</span><span class="zh">關於我們</span></a></li>
+          <li><a href="#doctors"><span class="pt">Médicos</span><span class="zh">醫師</span></a></li>
+          <li><a href="#appointment"><span class="pt">Agendar</span><span class="zh">預約</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="pt">Contato</h4>
+        <h4 class="zh">聯絡我們</h4>
+        <ul>
+          <li>(11) 3456-7890</li>
+          <li>WhatsApp: (11) 98765-4321</li>
+          <li>contato@vidaplena.com.br</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="pt">Legal</h4>
+        <h4 class="zh">法律資訊</h4>
+        <ul>
+          <li><a href="#"><span class="pt">Política de Privacidade</span><span class="zh">隱私權政策</span></a></li>
+          <li><a href="#"><span class="pt">Termos de Uso</span><span class="zh">使用條款</span></a></li>
+          <li><a href="#"><span class="pt">LGPD · Dados</span><span class="zh">LGPD 資料權</span></a></li>
+          <li><a href="mailto:dpo@vidaplena.com.br">DPO</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        <span class="pt">© 2026 Clínica Vida Plena · CNPJ 12.345.678/0001-90 · Responsável técnico: Dr. Ricardo Mendes · CRM-SP 123.456</span>
+        <span class="zh">© 2026 盈康診所 · 公司統編 12.345.678/0001-90 · 技術負責人：Ricardo Mendes 醫師 · CRM-SP 123.456</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Language switcher
+  const langButtons = document.querySelectorAll('.lang-switch button');
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      document.documentElement.lang = lang === 'zh' ? 'zh' : 'pt-BR';
+      langButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      localStorage.setItem('preferred-lang', lang);
+    });
+  });
+
+  // Restore language preference
+  const savedLang = localStorage.getItem('preferred-lang');
+  if (savedLang === 'zh') {
+    document.documentElement.lang = 'zh';
+    document.querySelector('[data-lang="zh"]').classList.add('active');
+    document.querySelector('[data-lang="pt"]').classList.remove('active');
+  }
+
+  // Smooth scroll offset for sticky header
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Form submission (prototype — replace with real backend integration)
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+    const lang = document.documentElement.lang;
+
+    // Build WhatsApp message
+    const msg = lang === 'zh'
+      ? `您好，我想預約看診：%0A姓名：${data.get('name')}%0A電話：${data.get('phone')}%0AEmail：${data.get('email') || '—'}%0A科別：${data.get('specialty')}%0A希望時段：${data.get('period')}%0A備註：${data.get('message') || '—'}`
+      : `Olá, gostaria de agendar uma consulta:%0ANome: ${data.get('name')}%0ATelefone: ${data.get('phone')}%0AEmail: ${data.get('email') || '—'}%0AEspecialidade: ${data.get('specialty')}%0APeríodo: ${data.get('period')}%0AObservações: ${data.get('message') || '—'}`;
+
+    // Open WhatsApp with pre-filled message
+    window.open(`https://wa.me/5511987654321?text=${msg}`, '_blank');
+
+    alert(lang === 'zh'
+      ? '預約申請已送出！我們將透過 WhatsApp 與您聯繫確認。'
+      : 'Pedido enviado! Entraremos em contato por WhatsApp para confirmar.');
+
+    form.reset();
+    return false;
+  }
+
+  // Reveal on scroll
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.service-card, .doctor-card, .appointment-step, .about-feature, .faq-item').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  }
+</script>
+
+</body>
+</html>
